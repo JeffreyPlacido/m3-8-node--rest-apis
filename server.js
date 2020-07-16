@@ -11,6 +11,10 @@ const {
   removeClient,
 } = require("./handlers/clientHandlers.js");
 
+const {
+  handleWord, handleGameWord, guess
+} = require("./handlers/hangmanHandlers.js");
+
 express()
   .use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -26,6 +30,10 @@ express()
   .use(express.urlencoded({ extended: false }))
 
   // endpoints
+
+.get("/hangman/word/:id", handleWord)
+.get("/hangman/word", handleGameWord)
+.get('/hangman/guess/:id/:guess', guess)
 
   .get("/clients", handleClients)
   .get("/clients/:id", handleClient)
