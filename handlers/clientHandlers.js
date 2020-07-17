@@ -26,7 +26,7 @@ function createNewGuy(req, res) {
   const newclient = req.body;
   if (client) {
     console.log("we have an email");
-    res.status(400).send("we already have this email on file");
+    res.status(404).send("we already have this email on file");
   } else {
     console.log("can be added");
     clients.push(newclient);
